@@ -5,24 +5,30 @@ import { FieldValues } from "react-hook-form";
 import { useEffect, useState } from "react";
 import Task from "./components/Task";
 import { TodoTask } from "./interfaces/TodoTask";
+import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
   const [tasks, setTasks] = useState<TodoTask[]>([]);
   const onSubmit = (data: FieldValues) => {
     const newTask: TodoTask = {
-      id: tasks.length,
+      id: uuidv4(),
       title: data.task,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
   };
-  const markOutTask = (id: number) => {
+  const markOutTask = (id: string) => {
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
   };
+  const updateTask = (id: string, task_title: string) => {
+    setTasks(
+      tasks.map(task => task.id === id ? {...task,title:task_title}:task)
+    )
+  }
 
   const completedTasksCount = tasks.filter((task) => task.isCompleted).length;
 
@@ -43,6 +49,7 @@ const App = () => {
           key={task.title}
           taskobj={task}
           markOutTask={() => markOutTask(task.id)}
+          updateTask={updateTask}
         />
       ))}
     </>

@@ -1,5 +1,5 @@
 export interface TodoTask {
-    id: number;
+    id: string;
     title: string;
     isCompleted: boolean;
 }

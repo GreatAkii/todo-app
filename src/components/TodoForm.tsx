@@ -6,10 +6,14 @@ interface Props {
   onSubmit(data: FieldValues): void;
 }
 const TodoForm = ({ onSubmit }: Props) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const handleOnSubmit = (data: FieldValues) => {
+    onSubmit(data);
+    reset();
+  };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleOnSubmit)}>
         <Center>
           <Flex
             gap={"10px"}

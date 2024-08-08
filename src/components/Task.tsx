@@ -15,10 +15,15 @@ import { TodoTask } from "../interfaces/TodoTask";
 
 interface Props {
   taskobj: TodoTask;
-  markOutTask(id: number): void;
+  markOutTask(id: string): void;
+  updateTask(id: string, task: string): void;
 }
 
-const Task = ({ taskobj, markOutTask }: Props) => {
+const Task = ({ taskobj, markOutTask, updateTask }: Props) => {
+  const handleUpdateTask = (data: string) => {
+    updateTask(taskobj.id, data);
+    console.log(data);
+  };
   const EditableControls = () => {
     const {
       isEditing,
@@ -57,7 +62,8 @@ const Task = ({ taskobj, markOutTask }: Props) => {
       defaultValue={taskobj.title}
       fontSize="2xl"
       isPreviewFocusable={false}
-      as={taskobj.isCompleted ? "del":"div"}
+      as={taskobj.isCompleted ? "del" : "div"}
+      onSubmit={handleUpdateTask}
     >
       <Center>
         <Flex
