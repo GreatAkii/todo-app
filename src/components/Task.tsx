@@ -76,15 +76,21 @@ const Task = ({ taskobj, markOutTask, updateTask }: Props) => {
           onSubmit={handleUpdateTask}
           isTruncated
         >
-          <Flex justify={"space-between"} align={"center"} gap={"10px"}>
-            <Box isTruncated>
+          <Flex justify={"space-between"} align={"center"} gap={"5px"}>
+            <Box isTruncated flex={"1"}>
               <EditablePreview
                 textDecoration={taskobj.isCompleted ? "line-through" : "none"}
                 textDecorationColor={"red"}
                 textDecorationStyle={"solid"}
               />
-              <Input as={EditableInput} w={"80%"} />
+              <Input
+                as={EditableInput}
+                minW={"100px"}
+                border={"2px"}
+                px="10px"
+              />
             </Box>
+
             <Flex justify={"space-between"} align={"center"}>
               <EditableControls />
               <IconButton
