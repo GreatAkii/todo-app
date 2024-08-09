@@ -1,6 +1,7 @@
-# Todo React App using chakra-ui
+# Todo React App using Chakra-UI
 
 This is a simple todo application built with React and chakra-ui. It allows you to add, and edit as well as mark them as completed.
+![Static Badge](https://img.shields.io/badge/Access%20the%20live%20version%20of%20the%20application-red) [https://greataki-todo.netlify.app/](https://greataki-todo.netlify.app/)
 
 ## Features
 
@@ -13,6 +14,7 @@ This is a simple todo application built with React and chakra-ui. It allows you 
 1. Clone the repository: `git clone https://github.com/GreatAkii/todo-app`
 2. Navigate to the project directory: `cd todo-app`
 3. Install dependencies: `npm install`
+4. Alternatively, you can access the live version of the application at [https://greataki-todo.netlify.app/](https://greataki-todo.netlify.app/)
 
 ## Usage
 
