@@ -57,43 +57,47 @@ const Task = ({ taskobj, markOutTask, updateTask }: Props) => {
     );
   };
   return (
-    <Editable
-      textAlign="center"
-      defaultValue={taskobj.title}
-      fontSize="2xl"
-      isPreviewFocusable={false}
-      as={taskobj.isCompleted ? "del" : "div"}
-      onSubmit={handleUpdateTask}
-    >
-      <Center>
-        <Flex
-          justify={"space-between"}
-          align={"center"}
-          mt={"10px"}
-          border={".0625rem"}
-          borderRadius={".625rem"}
-          bg={"lightseagreen"}
-          w={"40%"}
-          borderColor={"seagreen"}
-          minWidth={"18.75rem"}
-          p={"10px"}
+    <Center>
+      <Box
+        mt={"10px"}
+        w={"40%"}
+        border={"1px"}
+        bg={"lightseagreen"}
+        borderColor={"seagreen"}
+        borderRadius={".625rem"}
+        px={"10px"}
+        minWidth={"300px"}
+      >
+        <Editable
+          textAlign="center"
+          defaultValue={taskobj.title}
+          fontSize="2xl"
+          isPreviewFocusable={false}
+          onSubmit={handleUpdateTask}
+          isTruncated
         >
-          <EditablePreview />
-          <Box>
-            <Input as={EditableInput} />
-          </Box>
-          <ButtonGroup>
-            <EditableControls />
-            <IconButton
-              onClick={() => markOutTask(taskobj.id)}
-              colorScheme="white"
-              aria-label="Search database"
-              icon={<CloseIcon />}
-            />
-          </ButtonGroup>
-        </Flex>
-      </Center>
-    </Editable>
+          <Flex justify={"space-between"} align={"center"} gap={"10px"}>
+            <Box isTruncated>
+              <EditablePreview
+                textDecoration={taskobj.isCompleted ? "line-through" : "none"}
+                textDecorationColor={"red"}
+                textDecorationStyle={"solid"}
+              />
+              <Input as={EditableInput} w={"80%"} />
+            </Box>
+            <Flex justify={"space-between"} align={"center"}>
+              <EditableControls />
+              <IconButton
+                onClick={() => markOutTask(taskobj.id)}
+                colorScheme="white"
+                aria-label="Search database"
+                icon={<CloseIcon />}
+              />
+            </Flex>
+          </Flex>
+        </Editable>
+      </Box>
+    </Center>
   );
 };
 
