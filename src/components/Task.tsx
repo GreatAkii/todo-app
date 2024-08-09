@@ -22,7 +22,6 @@ interface Props {
 const Task = ({ taskobj, markOutTask, updateTask }: Props) => {
   const handleUpdateTask = (data: string) => {
     updateTask(taskobj.id, data);
-    console.log(data);
   };
   const EditableControls = () => {
     const {

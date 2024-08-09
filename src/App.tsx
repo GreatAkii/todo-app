@@ -8,7 +8,10 @@ import { TodoTask } from "./interfaces/TodoTask";
 import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
-  const [tasks, setTasks] = useState<TodoTask[]>([]);
+  const [tasks, setTasks] = useState<TodoTask[]>(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks):[]
+  });
   const onSubmit = (data: FieldValues) => {
     const newTask: TodoTask = {
       id: uuidv4(),
@@ -33,7 +36,7 @@ const App = () => {
   const completedTasksCount = tasks.filter((task) => task.isCompleted).length;
 
   useEffect(() => {
-    console.log(tasks);
+    localStorage.setItem("tasks",JSON.stringify(tasks));
   }, [tasks]);
 
   return (
